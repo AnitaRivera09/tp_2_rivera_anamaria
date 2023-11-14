@@ -1,16 +1,9 @@
-<?php
-include "../Result/fonctions.php";
-if(isset($_POST['ajouter']))
-{
-    ajouterAdresse($_POST);  
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <form method="post" action="../Formulaires/confirmationAdresses.php">
     <link rel="stylesheet" href="../CSS/style.css"/>
     <title>Formulaire d'adresses</title>
 </head>
@@ -22,7 +15,7 @@ if(isset($_POST['ajouter']))
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Traiter le formulaire lorsqu'il est soumis
-      $noadresses = isset($_POST['noadresses']) ? intval($_POST['noadresses']) : 0;    
+      $noadresses = isset($_POST['noadresses']) ? intval($_POST['noadresses']) : 0;
     
     for ($i = 1; $i <= $noadresses; $i++) {?>        
         <fieldset>
