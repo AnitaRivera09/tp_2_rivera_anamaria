@@ -1,0 +1,57 @@
+h1 {
+  color: rgb(34, 48, 155);
+  font-size: 30px;
+  font-family: Garamond;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+h2 {
+  color: rgb(36, 113, 163);
+  font-size: 20px;
+  font-family: Garamond;
+  text-decoration: underline;
+}
+
+legend {
+  color: rgb(142, 68, 173);
+  font-size: 20px;
+  font-family: Garamond;
+}
+
+body {
+  background-image: url("../Images/fond.avif");
+}
+
+label {
+  color: rgb(1, 43, 69);
+  font-family: Garamond;
+  font-size: 17px;
+}
+
+p {
+  color: rgb(1, 43, 69);
+  font-family: Garamond;
+  font-size: 17px;
+}
+
+select {
+  color: rgb(1, 43, 69);
+  font-family: Garamond;
+  font-size: 15px;
+}
+
+.buttons {
+  padding: 10px 20px;
+  background-color: #af4ca3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.buttons:hover {
+  background-color: #d334bb;
+}
+.buttons:active {
+  background-color: #a60a7c;
+}
