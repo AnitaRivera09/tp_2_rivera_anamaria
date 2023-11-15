@@ -59,3 +59,11 @@ body {
 .btn:hover {
   background: #133043;
 }
+
+li {
+  color: rgb(222, 47, 190);
+  font-size: 30px;
+  font-family: Garamond;
+  text-align: center;
+  text-transform: capitalize;
+}

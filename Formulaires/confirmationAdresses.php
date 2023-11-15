@@ -1,53 +1,75 @@
-<?php
-include "../Result/fonctions.php";
-if(isset($_POST['accepter']))
-{
-    ajouterAdresse($_POST);  
-}
-?>
+//<?php
+//include "../Result/fonctions.php";
+//if(isset($_POST['accepter']))
+//{
+ //   ajouterAdresse($streets, $street_nos, $types, $citys, $zip_codes);  
+//}
+//?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../CSS/page_bienvenue.css"/>
-    <title>Données d'adresses</title>
 </head>
 <body>
     <h1 class="titre">Données d'adresses</h1>
-    <form class="form" method="post"></form> 
-    </body>
+    <form class="form" method="post">
+    
+    <?php
+
+    $server = 'localhost';
+    $username ="root";
+    $pwd = "";
+    $db = "ecom1_tp2";
+    $conn = mysqli_connect($server,$username,$pwd,$db);
+    
+    if ($conn){
+        echo "<label>Connected to the $db database successfully</label>";
+    }else{
+        echo "<label>Error: Not connected to the $db database</label>";
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $noadresses = $_POST["noadresses"];
+        ?>
+
+        <h2>Résumé des données saisies:</h2>
+        <ul>
+            <?php
+            for ($i = 1; $i <= $noadresses; $i++) {
+                $street = $_POST["street_" . $i];
+                $streetno = $_POST["streetno_" . $i];
+                $type = $_POST["type_" . $i];
+                $city = $_POST["city_" . $i];
+                $zipcode = $_POST["zipcode_" . $i];
+
+                echo '<h1 class="titre">Adresse ' . ($i + 1) . ':</h1>';
+                echo '<p><strong>Street:</strong> ' . htmlspecialchars($street) . '</p>';
+                echo '<p><strong>Street_no:</strong> ' . htmlspecialchars($streetno) . '</p>';
+                echo '<p><strong>Type:</strong> ' . htmlspecialchars($type) . '</p>';
+                echo '<p><strong>City:</strong> ' . htmlspecialchars($city) . '</p>';
+                echo '<p><strong>Zip_code:</strong> ' . htmlspecialchars($zipcode) . '</p>';
+                echo '<br>';
+
+                // Insertar datos en la base de datos
+                $query = "INSERT INTO address VALUES (NULL,'$street','$streetno','$type','$city','$zipcode')";
+                
+                if ($conn->query($query) === TRUE) {
+                    echo "<li></strong>Addresse $i enregistrée avec succès.</strong></li>";
+                } else {
+                    echo "Erreur lors de l'enregistrement de l'adresse: " . $conn->error;
+                }
+            }
+            ?>
+        </ul>
+        <?php
+        // Cerrar la conexión a la base de datos
+        $conn->close();
+    } else {
+        header("Location: ajouterAdresse.php");
+        exit();
+    }
+    ?>
+</body>
 </html>
-
-<?php
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $noadresses = $_POST["noadresses"];
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener el número de direcciones ingresado
-    $streets = $_POST["street"];
-    $street_nos = $_POST["street_no"];
-    $types=$_POST["type"];
-    $citys=$_POST["city"];
-    $zip_codes=$_POST["zip_code"];
-
-
-
-    echo '<h2>Résumé des données saisies:</h2>';
-
-    for ($i = 0; $i < $noadresses; $i++) {
-        echo '<h1 class="titre">Adresse ' . ($i + 1) . ':</h1>';
-        echo '<p><strong>Street:</strong> ' . htmlspecialchars($streets[$i]) . '</p>';
-        echo '<p><strong>Street_no:</strong> ' . htmlspecialchars($street_nos[$i]) . '</p>';
-        echo '<p><strong>Type:</strong> ' . htmlspecialchars($types[$i]) . '</p>';
-        echo '<p><strong>City:</strong> ' . htmlspecialchars($citys[$i]) . '</p>';
-        echo '<p><strong>Zip_code:</strong> ' . htmlspecialchars($zip_codes[$i]) . '</p>';
-        echo '<br>';
-    }?>
-    <button type="submit" class="btn" name='accepter'>Confirmer les informations</button>
-    <?php } else {
-    echo '<p>Erreur Affichage des données</p>';
-}
-?>

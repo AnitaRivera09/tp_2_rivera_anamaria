@@ -17,16 +17,16 @@
         <form class="form" method="post" action="../Formulaires/confirmationAdresses.php">     
         <fieldset>
         <legend><strong><h1 class="titre">Détails de l'adresse  <?php echo $i ?></h1></strong></legend>
-        <input class="inputs" placeholder="Street" type="text" name="street[]" required>
-        <input class="inputs" placeholder="Street Number" type="text" name="street_no[]" required>
-        <select class="inputs" placeholder="Type" name="type[]" required>
+        <input class="inputs" placeholder="Street" type="text" name="street_<?php echo $i; ?>" required>
+        <input class="inputs" placeholder="Street Number" type="text" name="streetno_<?php echo $i; ?>" required>
+        <select class="inputs" placeholder="Type" name="type_<?php echo $i; ?>" required>
             <option>Livraison</option>
             <option>Facturation</option>
             <option>Maison</option>
             <option>Bureau</option>
             <option>Autre</option>
         </select>
-        <select class="inputs" placeholder="City" name="city[]" required>
+        <select class="inputs" placeholder="City" name="city_<?php echo $i; ?>" required>
             <option>Montréal</option>
             <option>Toronto</option>
             <option>Vancouver</option>
@@ -34,7 +34,7 @@
             <option>Alberta</option>
             <option>Calgary</option>
         </select>
-        <input class="inputs" placeholder="Zip Code" type="text" name="zip_code[]" required>
+        <input class="inputs" placeholder="Zip Code" type="text" name="zipcode_<?php echo $i; ?>" required>
         </fieldset><?php }?>
         <p></p>
         <input type="hidden" name="noadresses" value="<?php echo $noadresses;?>">
@@ -43,7 +43,5 @@
     else {
         header("Location: pageBienvenue.php");
         exit();
-    }?>  
-    </form>
-</body>
-</html>
+    }?>   
+}
