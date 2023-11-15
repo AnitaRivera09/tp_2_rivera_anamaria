@@ -1,42 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <form method="post" action="../Formulaires/confirmationAdresses.php">
-    <link rel="stylesheet" href="../CSS/style.css"/>
-    <title>Formulaire d'adresses</title>
+    <title>Registre d'adresses</title>
+    <link rel="stylesheet" href="../CSS/page_bienvenue.css">
 </head>
 <body>
-<h2>Saisissez les informations suivantes pour chacune des adresses:</h2>
-    <form method="post">
-    
-    <?php 
-    
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Traiter le formulaire lorsqu'il est soumis
-      $noadresses = isset($_POST['noadresses']) ? intval($_POST['noadresses']) : 0;
-    
-    for ($i = 1; $i <= $noadresses; $i++) {?>        
+<?php
+
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Traiter le formulaire lorsqu'il est soumis
+    $noadresses = isset($_POST['noadresses']) ? intval($_POST['noadresses']) : 0;
+    global $noadresses;
+
+    for ($i = 1; $i <= $noadresses; $i++) {?>   
+        <form class="form" method="post" action="../Formulaires/confirmationAdresses.php">     
         <fieldset>
-        <legend><strong>Détails de l'adresse  <?php echo $i ?> </strong></legend>
-        <label for="street"><strong>Street:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</strong></label>
-        <input type="text" name="street[]" required><br>
-        <p></p>
-        <label for="street_no"><strong>Street Number:<strong></label>
-        <input type="text" name="street_no[]" required><br>
-        <p></p>
-        <label for="type"><strong>Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<strong></label>
-        <select name="type[]" required>
+        <legend><strong><h1 class="titre">Détails de l'adresse  <?php echo $i ?></h1></strong></legend>
+        <input class="inputs" placeholder="Street" type="text" name="street[]" required>
+        <input class="inputs" placeholder="Street Number" type="text" name="street_no[]" required>
+        <select class="inputs" placeholder="Type" name="type[]" required>
             <option>Livraison</option>
             <option>Facturation</option>
             <option>Maison</option>
             <option>Bureau</option>
             <option>Autre</option>
         </select>
-        <p></p>
-        <label for="city"><strong>City:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<strong></label>
-        <select name="city[]" required>
+        <select class="inputs" placeholder="City" name="city[]" required>
             <option>Montréal</option>
             <option>Toronto</option>
             <option>Vancouver</option>
@@ -44,14 +34,16 @@
             <option>Alberta</option>
             <option>Calgary</option>
         </select>
-        <p></p>
-        <label for="zip_code"><strong>Zip Code:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<strong></label>
-        <input type="text" name="zip_code[]" required><br>
-        <p></p>
+        <input class="inputs" placeholder="Zip Code" type="text" name="zip_code[]" required>
         </fieldset><?php }?>
         <p></p>
-        <button type="submit" class="buttons" name='ajouter'>Envoyer</button>
-        <?php }?>
+        <input type="hidden" name="noadresses" value="<?php echo $noadresses;?>">
+        <button type="submit" class="btn">Envoyer</button>
+        <?php }
+    else {
+        header("Location: pageBienvenue.php");
+        exit();
+    }?>  
     </form>
 </body>
 </html>
