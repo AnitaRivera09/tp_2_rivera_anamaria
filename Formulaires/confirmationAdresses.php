@@ -14,7 +14,7 @@
 </head>
 <body>
     <h1 class="titre">Données d'adresses</h1>
-    <form class="form" method="post">
+    <form class="form" method="post" action="../Formulaires/affichageAdresses.php">
     
     <?php
 
@@ -71,5 +71,6 @@
         exit();
     }
     ?>
+    <button type="submit" class="btn">Afficher toutes les Adresses</button>
 </body>
 </html>
