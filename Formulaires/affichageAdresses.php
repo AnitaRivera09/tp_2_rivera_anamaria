@@ -6,10 +6,13 @@
     <h1 class="titre">Adresses Actuelles</h1>
     <form class="form" method="post" action="../Formulaires/pageBienvenue.php">
 <?php 
+
+//Données pour la connection
 $username = "root"; 
 $password = ""; 
 $database = "ecom1_tp2"; 
 $mysqli = new mysqli("localhost", $username, $password, $database); 
+//qyery pour l'affichage
 $query = "SELECT * FROM address";
 
 
@@ -23,6 +26,7 @@ echo '<table border="0" cellspacing="2" cellpadding="2">
           <td> <font face="Arial">ZIP CODE</font> </td> 
       </tr>';
 
+      //affichage dans une tableau
 if ($result = $mysqli->query($query)) {
     while ($row = $result->fetch_assoc()) {
         $field1name = $row["id"];

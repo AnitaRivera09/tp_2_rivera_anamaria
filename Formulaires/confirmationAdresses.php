@@ -17,7 +17,7 @@
     <form class="form" method="post" action="../Formulaires/affichageAdresses.php">
     
     <?php
-
+    //connection a la base de données
     $server = 'localhost';
     $username ="root";
     $pwd = "";
@@ -52,7 +52,9 @@
                 echo '<p><strong>Zip_code:</strong> ' . htmlspecialchars($zipcode) . '</p>';
                 echo '<br>';
 
-                // Insertar datos en la base de datos
+
+
+                // Insertion de données dans ka base de donnéen
                 $query = "INSERT INTO address VALUES (NULL,'$street','$streetno','$type','$city','$zipcode')";
                 
                 if ($conn->query($query) === TRUE) {
@@ -61,10 +63,11 @@
                     echo "Erreur lors de l'enregistrement de l'adresse: " . $conn->error;
                 }
             }
+        
             ?>
         </ul>
         <?php
-        // Cerrar la conexión a la base de datos
+        // fermer la conncetion
         $conn->close();
     } else {
         header("Location: ajouterAdresse.php");

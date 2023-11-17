@@ -19,7 +19,7 @@
     <!--FORMULAIRE---->
     <form class="form" method="post" action="../Formulaires/ajouterAdresse.php">
         
-        <!--TITRE------------------------>
+        <!--Titre------------------------>
         <h1 class="titre">Entrez vos coordonnées ici:</h1>
         
         <!--INPUTS ENTRÉES DE DONNÉES------------------------------------------------>
@@ -28,7 +28,7 @@
         <input class="inputs" type="number" name="noadresses" placeholder="Nombre d'adresses" required min="1" maxlength="30">
         
                 
-        <!--BOTON-DE-REGISTRARSE-------------------------->
+        <!--Buttons-------------------------->
         <input type="submit" class="btn" value="Envoyer">
 		<input type="reset" class="btn" value="Annuler">
            

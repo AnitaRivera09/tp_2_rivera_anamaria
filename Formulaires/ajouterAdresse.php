@@ -12,7 +12,7 @@
     // Traiter le formulaire lorsqu'il est soumis
     $noadresses = isset($_POST['noadresses']) ? intval($_POST['noadresses']) : 0;
     global $noadresses;
-
+    //formulaire
     for ($i = 1; $i <= $noadresses; $i++) {?>   
         <form class="form" method="post" action="../Formulaires/confirmationAdresses.php">     
         <fieldset>
