@@ -44,7 +44,7 @@
                 $city = $_POST["city_" . $i];
                 $zipcode = $_POST["zipcode_" . $i];
 
-                echo '<h1 class="titre">Adresse ' . ($i + 1) . ':</h1>';
+                echo '<h1 class="titre">Adresse ' . ($i) . ':</h1>';
                 echo '<p><strong>Street:</strong> ' . htmlspecialchars($street) . '</p>';
                 echo '<p><strong>Street_no:</strong> ' . htmlspecialchars($streetno) . '</p>';
                 echo '<p><strong>Type:</strong> ' . htmlspecialchars($type) . '</p>';

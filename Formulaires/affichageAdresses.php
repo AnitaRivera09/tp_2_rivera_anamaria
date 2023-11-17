@@ -1,10 +1,10 @@
 <html>
     <head>
-    <link rel="stylesheet" href="../CSS/style.css"/>
+    <link rel="stylesheet" href="../CSS/page_bienvenue.css"/>
     </head>
 <body>
     <h1 class="titre">Adresses Actuelles</h1>
-    <form class="form" method="post">
+    <form class="form" method="post" action="../Formulaires/pageBienvenue.php">
 <?php 
 $username = "root"; 
 $password = ""; 
@@ -44,5 +44,6 @@ if ($result = $mysqli->query($query)) {
     $result->free();
 } 
 ?>
+<button type="submit" class="btn">Retour à la page principale</button>
 </body>
 </html>

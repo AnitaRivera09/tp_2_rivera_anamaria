@@ -25,8 +25,10 @@ body {
 }
 /*--TITULO-----------------------*/
 .titre {
-  color: #022041;
+  color: #1610c2;
   margin-bottom: 20px;
+  text-align: center;
+  font-size: 35px;
 }
 /*--CAJAS-DE-DATOS---------------*/
 .inputs {
@@ -61,9 +63,41 @@ body {
 }
 
 li {
-  color: #251e31;
+  color: #020005;
   font-size: 20px;
   font-family: Garamond;
   text-align: center;
   text-transform: capitalize;
+  text-decoration: #225677;
+}
+table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 12px;
+  margin: 45px;
+  width: 480px;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+th {
+  font-size: 13px;
+  font-weight: normal;
+  padding: 8px;
+  background: #b9c9fe;
+  border-top: 4px solid #aabcfe;
+  border-bottom: 1px solid #fff;
+  color: #039;
+}
+
+td {
+  padding: 8px;
+  background: #e8edff;
+  border-bottom: 1px solid #fff;
+  color: #669;
+  border-top: 1px solid transparent;
+}
+
+tr:hover td {
+  background: #d0dafd;
+  color: #339;
 }
